@@ -1,0 +1,14 @@
+
+@model Pet
+<div>
+    <form class="d-flex flex-column align-items-center" action="/pets/update/@Model.PetId" method="post">
+        <h1>Edit Pet</h1>
+        <label for="Name">Name</label>
+        <input asp-for="Name">
+        <span asp-validation-for="Name"></span>
+        <label for="Species">Species</label>
+        <input asp-for="Species">
+        <span asp-validation-for="Species"></span>
+        <input type="submit" value="Submit" class="btn btn-primary my-3">
+    </form>
+</div>

@@ -1,8 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model Pet
+<div>
+    <form class="d-flex flex-column align-items-center" action="/pets/add" method="post">
+        <h1>Add Pet</h1>
+        <label for="Name">Name</label>
+        <input asp-for="Name">
+        <span asp-validation-for="Name"></span>
+        <label for="Species">Species</label>
+        <input asp-for="Species">
+        <span asp-validation-for="Species"></span>
+        <input type="submit" value="Submit" class="btn btn-primary my-3">
+    </form>
+    <ul>
+        @foreach (Pet p in ViewBag.AllPets)
+        {
+            <li>
+                <span>@p.Name the @p.Species</span>
+                <span><a href="/pets/remove/@p.PetId">Remove</a></span>
+                <span><a href="/pets/edit/@p.PetId">Update</a></span>
+            </li>
+        }
+    </ul>
 </div>
